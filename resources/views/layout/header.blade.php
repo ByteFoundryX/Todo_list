@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Todo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Category</a>
+                        <a class="nav-link" href="{{ route('Category.index') }}">Category</a>
                     </li>
                 </ul>
             </div>
