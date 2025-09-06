@@ -10,8 +10,6 @@ Route::get('/', [TodoController::class , 'index'])->name('todo.index');
 
 //Categories Routes
 
-Route::get('/categories/index', [CategoryController::class , 'index'])->name('categories.index');
-Route::get('/categories/create', [CategoryController::class , 'create'])->name('categories.create');
-Route::post('/categories', [CategoryController::class , 'store'])->name('categories.store');
-Route::get('/categories/{category}/edit', [CategoryController::class , 'edit'])->name('categories.edit');
-Route::put('/categories/{category}', [CategoryController::class , 'update'])->name('categories.update');
+Route::get('/Categories', [CategoryController::class , 'index'])->name('Category.index');
+Route::get('/Categories/create', [CategoryController::class , 'create'])->name('Category.create');
+Route::post('/Categories', [CategoryController::class , 'store'])->name('Category.store');
