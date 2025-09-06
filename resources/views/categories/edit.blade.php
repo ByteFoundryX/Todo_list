@@ -4,15 +4,16 @@
 
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="">Create Category</h5>
+        <h5 class="">edit Category</h5>
         <a href="{{ route('categories.index') }}" class="btn btn-dark">back</a>
     </div>
     <div class="card-body">
-        <form action="{{ route('categories.store') }}" method="POST" >
+        <form action="{{ route('categories.update' , ['category' =>  $category->id ])  }}" method="POST" >
             @csrf       
+            @method('PUT')
              <div class="mb-3">
                 <label class="form-label">Title</label>
-                <input type="text" name="title" class="form-control">
+                <input type="text" name="title" value="{{ $category->title }}" class="form-control">
                 <div class="form-text text-danger"> 
                     @error('title') 
                         {{ $message }}   
