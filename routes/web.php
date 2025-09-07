@@ -13,3 +13,6 @@ Route::get('/', [TodoController::class , 'index'])->name('todo.index');
 Route::get('/Categories', [CategoryController::class , 'index'])->name('Category.index');
 Route::get('/Categories/create', [CategoryController::class , 'create'])->name('Category.create');
 Route::post('/Categories', [CategoryController::class , 'store'])->name('Category.store');
+Route::get('/Categories/{category}/edit', [CategoryController::class , 'edit'])->name('Category.edit');
+Route::put('/Categories/{category}', [CategoryController::class , 'update'])->name('Category.update');
+Route::delete('/Categories/{category}', [CategoryController::class , 'destroy'])->name('Category.destroy');

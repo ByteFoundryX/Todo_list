@@ -21,9 +21,13 @@
                     @foreach ($categories as $category)
                         <tr>
                             <td>{{ $category->title }}</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            <td class="d-flex">
+                                <a href="{{ route('Category.edit', ['category' => $category->id ])  }}" class="btn btn-sm btn-secondary">Edit</a>
+                               <form action="{{ route('Category.destroy', ['category' => $category->id]) }}" method="POST">
+                                 @csrf
+                                  @method('DELETE')
+                                 <button type="submit" href="#" class="btn btn-sm btn-danger ms-2">Delete</button>
+                               </form>
                             </td>
                         </tr>
                     @endforeach
