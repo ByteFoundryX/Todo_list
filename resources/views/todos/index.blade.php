@@ -8,7 +8,7 @@
             <a href="{{ route('todo.create') }}" class="btn btn-dark">create</a>
         </div>
         <div class="card-body">
-            <table class="table table-striped">
+            <table class="table table-striped align-middle">
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -27,7 +27,12 @@
                         <td>{{ $todo->category->title }}</td>
                         <td>
                             <a href="{{ route('todo.show', ['todo' => $todo->id]) }}" class="btn btn-sm btn-secondary">Show</a>
-                            <button disabled class="btn btn-sm btn-outline-danger">Completed</button>
+                            @if ($todo->status)
+                                <button disabled class="btn btn-sm btn-outline-danger">Completed</button>
+                                   <a href="{{ route('todo.cancel' , ['todo' => $todo->id]) }}" disabled class="btn btn-sm btn-info">Cancel</a>
+                                @else
+                                <a href="{{ route('todo.completed' , ['todo' => $todo->id]) }}" disabled class="btn btn-sm btn-info">Done?</a>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

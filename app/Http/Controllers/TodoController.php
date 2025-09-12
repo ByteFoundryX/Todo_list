@@ -36,6 +36,49 @@ class TodoController extends Controller
 
 
 
+    
+    public function completed(Todo $todo)
+  {
+
+
+   
+
+    $todo->update([
+      'status' => 1
+    ]);
+        return redirect()->route('todo.index');
+  }
+
+
+
+      
+    public function cancel(Todo $todo)
+  {
+
+
+    $todo->update([
+      'status' => 0
+    ]);
+        return redirect()->route('todo.index');
+  }
+
+
+
+
+
+     public function edit(Todo $todo)
+  {
+
+       
+       $categories = Category::all();
+    return view('todos.edit', compact('todo' , 'categories'));
+  
+  }
+
+
+
+
+
 
 
   public function create()
