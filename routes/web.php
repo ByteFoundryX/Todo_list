@@ -13,6 +13,8 @@ Route::get('/todos/{todo}/completed', [TodoController::class , 'completed'])->na
 Route::get('/todos/{todo}/cancel', [TodoController::class , 'cancel'])->name('todo.cancel');
 Route::post('/todos', [TodoController::class , 'store'])->name('todo.store');
 Route::get('/todos/{todo}/edit', [TodoController::class , 'edit'])->name('todo.edit');
+Route::put('/todos/{todo}', [TodoController::class , 'update'])->name('todo.update');
+Route::delete('/todos/{todo}', [TodoController::class , 'destroy'])->name('todo.destroy');
 
 
 

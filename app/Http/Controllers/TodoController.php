@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TodoController extends Controller
 {
@@ -120,4 +121,61 @@ class TodoController extends Controller
 
        return redirect()->route('todo.create');
   }
+
+
+
+
+
+    public function update(Request $request , Todo $todo)
+  {
+
+    $request->validate([
+
+       'image' => 'nullable|max:200|image',  
+       'title' => 'required|min:5',  
+       'description' => 'required|min:5',  
+       'category_id' => 'required|integer',
+
+    ]);
+
+
+   if($request->hasFile('image')){
+
+    Storage::delete('images/' . $todo->image);
+    $filename = time() . '_' . $request->image->getClientOriginalName();
+    $request->image->storeAs('/images' , $filename);
+   }
+
+   
+    $todo->update([
+         
+       'image' => $request->hasFile('image') ?  $filename : $todo->image ,  
+       'title' => $request->title,  
+       'description' => $request->description,  
+       'category_id' => $request->category_id,
+
+    ]);
+
+
+       return redirect()->route('todo.index');
+  }
+
+
+
+
+
+     public function destroy(Todo $todo)
+  {
+
+       $todo->delete();
+         return redirect()->route('todo.index');
+  
+  
+  }
+
+
+
+
+  
+
 }
