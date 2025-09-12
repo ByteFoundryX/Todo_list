@@ -19,7 +19,7 @@ class TodoController extends Controller
   {
 
 
-       $todos = Todo::all();
+       $todos = Todo::paginate(3);
       return view('todos.index', compact('todos'));
 
   }
@@ -119,7 +119,7 @@ class TodoController extends Controller
     ]);
 
 
-       return redirect()->route('todo.create');
+       return redirect()->route('todo.index');
   }
 
 
